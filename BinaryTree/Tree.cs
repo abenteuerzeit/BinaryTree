@@ -1,6 +1,8 @@
-﻿namespace BinaryTree
+﻿using System.Collections;
+
+namespace BinaryTree
 {
-    public class Tree<TItem> where TItem : IComparable<TItem>
+    public class Tree<TItem> : IEnumerable<TItem> where TItem : IComparable<TItem>
     {
         public TItem NodeData { get; set; }
         public Tree<TItem>? LeftTree { get; set; }
@@ -57,6 +59,16 @@
             }
 
             return result;
+        }
+
+        IEnumerator<TItem> IEnumerable<TItem>.GetEnumerator()
+        {
+            return new TreeEnumerator<TItem>(this);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }
