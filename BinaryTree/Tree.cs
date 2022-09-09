@@ -63,7 +63,6 @@ namespace BinaryTree
 
         IEnumerator<TItem> IEnumerable<TItem>.GetEnumerator()
         {
-            //return new TreeEnumerator<TItem>(this);
             if (this.LeftTree is not null)
             {
                 foreach (TItem item in this.LeftTree)
